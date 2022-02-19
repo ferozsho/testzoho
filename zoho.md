@@ -27,7 +27,9 @@ This integration, which is in the form of a plugin, allows you to easily embed y
 |Path          	|`wp-content/themes/videotube-child/`          |
 
 **Line Number :** 4
+
 **Action:** Add
+
 **CODE:**
 
     if(class_exists('vxcf_zoho')){
@@ -35,7 +37,9 @@ This integration, which is in the form of a plugin, allows you to easily embed y
     }
 
 **Line Number :** 5932
+
 **Action:** Add
+
 **CODE:**
 
     add_action('woocommerce_after_order_object_save', 'create_lead_deal_in_zoho_crm', 15, 2);
@@ -201,15 +205,21 @@ ___
 |Path          	|`wp-content/plugins/cf7-zoho-pro/`          |
 
 **Line Number :** 62
+
 **Action:** Add
+
 **CODE:**
 
    	public static $geo_location_details;
 
 **Line Number :** 98
+
 **Action:** Add 
+
 **CODE:**
+
 #### function setup_main()  
+
     $curl = curl_init();
     $clientIp = isset($_SERVER["HTTP_CF_CONNECTING_IP"]) && $_SERVER["HTTP_CF_CONNECTING_IP"] != "" ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR'];
     $token = base64_encode(GEO_LOCATION_API_CLIENT_ID.':'.GEO_LOCATION_API_PASSWORD);
@@ -232,9 +242,13 @@ ___
     self::$geo_location_details = json_decode($response,true);
 
 **Line Number :** 170
+
 **Action:** Add
+
 **CODE:**
+
 #### form_submitted() function
+
     $userLocation = self::$geo_location_details;
     $city = $country = $state = $zipCode = "";	
     if (!empty($userLocation) && is_array($userLocation) && count($userLocation) > 0) {
@@ -246,8 +260,11 @@ ___
     $locationData = ['City' => $city, 'State' => $state, 'Country' => $country, 'Zip_Code' => $zipCode];
 
 **Line Number :** 175
+
 **Action:** Add
+
 **CODE:**
+
 #### form_submitted() function
 
     if(in_array($name, ["City", "State", "Country", "Zip_Code"])) {
